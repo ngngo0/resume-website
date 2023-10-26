@@ -18,13 +18,52 @@
 		<h1>Welcome to Georolyn's Resume Website!</h1>
 	</header>
 	<main>
+		<nav>
+			<a href="#About"> Jump to About </a> <br>
+			<a href="#Projects"> Jump to Projects </a> <br>
+			<a href="#Contact_Me"> Jump to Contact Me </a> <br>
+			<a href="#Experimental"> Jump to Experimental Section </a> <br>
+		</nav>
 		<section id="About">
 			<h2>About Me</h2>
-			<a href="https://drive.google.com/file/d/1Odwau_fvA9R157fU6EWKdij_dbI9AVsg/view?usp=sharing"> My Resume</a>
+			<strong> My resume</strong> <br>
+			<iframe src="https://drive.google.com/file/d/1Odwau_fvA9R157fU6EWKdij_dbI9AVsg/preview?usp=sharing" title="My resume"></iframe>
 			<pre>What langauges do I know? ... 
 				Well... That's a good question!</pre>
 			<p>I know the following languages: 
-				<span style="color:gray;">Java, HTML, CSS, C++, C </span></p>
+				<span style="color:gray;">Java, HTML, CSS, C++, C </span>
+			</p>
+			<table>
+				<caption>Known Languages</caption>
+				<colgroup>
+					<col style="background-color: lightblue;">
+				</colgroup>
+				<tr>
+				  <th>Langauge</th>
+				  <th>Skill(1-5)</th>
+				</tr>
+				<tr>
+				  <td>Java</td>
+				  <td>4</td>
+				</tr>
+				<tr>
+				  <td>HTML</td>
+				  <td>3</td>
+				</tr>
+				<tr>
+					<td>CSS</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>C++</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>C</td>
+					<td>3</td>
+				</tr>
+			</table>
+			
 		</section>
 		<hr>
 		<aside>
@@ -37,11 +76,16 @@
 		<hr>
 		<section id="Projects">
 			<h2>Projects!</h2>
-			<ul>
-				<li><a href="https://github.com/ngngo0/mern-full-stack">Proj 1: Full Stack Mern App</a></li>
-				<li><a href="https://github.com/ngngo0/MovieApi"> Proj 2: Movie Searcher using API</a></li>
+			<details>
+				<summary>Proj 1: Full Stack Mern App</summary>
+				<p>A full stack mern workout list website with login/signup and add/delete functionality <a href="https://github.com/ngngo0/mern-full-stack">Github Link</a></p>
+			</details>
+			<details>
+				<summary>Proj 2: Movie Searcher using API</summary>
+				<p>A movie lookup website where API calls are being made to the omdb api<a href="https://github.com/ngngo0/MovieApi"> Github Link</a></p>
+			</details>	
 				
-			</ul>
+			
 		</section>
 		<hr>
 		<section id="Contact_Me">
@@ -57,7 +101,7 @@
 			</form>
 		</section>
 		<hr>
-		<section>
+		<section id="Experimental">
 			<h2>Experimental Section</h2>
 
 			<figure>
@@ -121,7 +165,13 @@
 				</svg>
 			</div>
 			<p>If <em>only</em> i knew what the <code>background-color</code> property is.....</p>
-			<iframe src="https://www.w3schools.com" title="W3Schools Free Online Web Tutorials"></iframe>
+			<p>The song I have on repeat right now...</p>
+			<video controls>
+				<source src="othermedia\catpetting.mp4" type="video/mp4">
+			</video>
+			
+			<audio controls>
+				<source src="othermedia\Wow sound effect (no copyright).mp3" type="audio/mp3">
 			<template>
 				<h3>Project: </h3>
 				<a href=""> Github link </a>
