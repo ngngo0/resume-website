@@ -11,6 +11,70 @@
 </head>
 	
 <body>
-    <header>wee</header>
+	
+    <header>
+		<h1>Welcome to Georolyn's Resume Website!</h1>
+	</header>
+	<main>
+		<section id="About">
+			<h2>About Me</h2>
+			This is the about section
+		</section>
+		<aside>
+			Fun Facts about me:
+			<ul>
+				<li> I like cats</li>
+				<li> I like crafty stuff</li>
+			</ul>
+		</aside>
+		<section id="Contact Me">
+			<form action="" method="get">
+				<h2> Contact Me</h2>
+				<label for="contact_email"> Email: </label>
+				<input type="text" name="contact_email">
+				
+				<label for="contact_message"> Message: </label>
+				<input type="text" name="contact_message">
+
+				<input type="submit" value="Contact Me">
+			</form>
+		</section>
+		<div>
+			<h2>Experimental Section</h2>
+			<figure>
+				<img src="/images/chris_cat_golden_circle.jpg" width="200rem" height="200rem" alt="A cat picture">
+				<figcaption> My friend's cat embodying the golden ratio</figcaption>
+			</figure>
+			<button>❤️ for the cat</button>
+			<fieldset>
+				<legend>A heavy question...</legend>
+				<ol>
+					<li>
+						<label for="cat_select"> Are you a cat person or a dog person?</label>
+						<select id="cat_select">
+							<optgroup label="Normal">
+								<option> Cat</option>
+								<option> Dog</option>
+							</optgroup>
+							<optgroup label="Other">
+								<option>Both</option>
+								<option>Neither</option>
+								<option>Snakes</option>
+							</optgroup>
+						</select>
+					</li>
+					<li>
+						<label>What is your favorite animal? Why?</label>
+						<textarea id="text_fav_animal" name="text_fav_animal" rows="2" cols="30">
+							I like ... because...
+						</textarea>
+					</li>
+				</ol>
+			</fieldset>
+		</div>
+	</main>
+	<footer>
+		Made by Georolyn :) 
+	</footer>
 </body>
 </html>
