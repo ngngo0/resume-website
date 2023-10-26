@@ -21,9 +21,12 @@
 		<section id="About">
 			<h2>About Me</h2>
 			<a href="https://drive.google.com/file/d/1Odwau_fvA9R157fU6EWKdij_dbI9AVsg/view?usp=sharing"> My Resume</a>
-			<p>I know the following languages:<br>
+			<pre>What langauges do I know? ... 
+				Well... That's a good question!</pre>
+			<p>I know the following languages: 
 				<span style="color:gray;">Java, HTML, CSS, C++, C </span></p>
 		</section>
+		<hr>
 		<aside>
 			<strong>Fun Facts about me:</strong>
 			<ul>
@@ -31,30 +34,37 @@
 				<li> I like crafty stuff</li>
 			</ul>
 		</aside>
-		<section id="Projects"> 
-			<template>
-				<h3>Project:</h3>
+		<hr>
+		<section id="Projects">
+			<h2>Projects!</h2>
+			<ul>
+				<li><a href="https://github.com/ngngo0/mern-full-stack">Proj 1: Full Stack Mern App</a></li>
+				<li><a href="https://github.com/ngngo0/MovieApi"> Proj 2: Movie Searcher using API</a></li>
 				
-			</template>
-			<div>Project 1:</div>
-			<div>Project 2:</div>
+			</ul>
 		</section>
+		<hr>
 		<section id="Contact_Me">
-			<form action="httpbin.org/" method="get">
+			<form action="https://httpbin.org/get" method="get">
 				<h2> Contact Me</h2>
 				<label for="contact_email"> Email: </label>
 				<input type="text" id= "contact_email" name="contact_email">
-				
+				<br>
 				<label for="contact_message"> Message: </label>
 				<input type="text" id="contact_message" name="contact_message">
-
+				<br>
 				<input type="submit" value="Contact Me">
 			</form>
 		</section>
+		<hr>
 		<section>
 			<h2>Experimental Section</h2>
+
 			<figure>
-				<img src="/images/chris_cat_golden_circle.jpg" width="20%" height="20%" alt="A cat picture">
+				<picture>
+					<source media="(min-width:1000px)" srcset="/images/chris_cat_golden_circle.jpg">
+					<img src="/images/chris_cat.jpg" alt="Cat" width="200" height="200">
+				  </picture>
 				<figcaption> My friend's cat embodying the <i>golden ratio</i></figcaption>
 			</figure>
 			<button>❤️ for the cat</button>
@@ -82,8 +92,8 @@
 						</textarea>
 					</li>
 					<li>
-						<label for="animal_would_you_be"> If you could be an animal, which one would you be?</label>
-						<input list="animal_list">
+						<label for="animal_would_you_be"> If you could be an animal, which one would you be? Pick from the options</label>
+						<input list="animal_list" id="animal_would_you_be">
 						<datalist id="animal_list">
 							<option value="Cat">
 							<option value="Dog">
@@ -110,8 +120,15 @@
 					/>
 				</svg>
 			</div>
-			<p>If only i knew what the <code>background-color</code> property is.....</p>
+			<p>If <em>only</em> i knew what the <code>background-color</code> property is.....</p>
+			<iframe src="https://www.w3schools.com" title="W3Schools Free Online Web Tutorials"></iframe>
+			<template>
+				<h3>Project: </h3>
+				<a href=""> Github link </a>
+				<p1>This project is about...</p1>
+			</template>
 		</section>
+		
 	</main>
 	<footer>
 		<h3>Made by Georolyn </h3>
