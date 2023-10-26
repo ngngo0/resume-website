@@ -7,7 +7,9 @@
 	<meta name="author" content=" Georolyn :)" >
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 	<title>CSE 134B Homework 2 Website</title>
-    
+    <link rel="icon" type="image/x-icon" href="/images/chris_cat_golden_circle.jpg">
+	<style> </style>
+	
 </head>
 	
 <body>
@@ -29,22 +31,30 @@
 				<li> I like crafty stuff</li>
 			</ul>
 		</aside>
-		<section id="Contact Me">
+		<section id="Projects"> 
+			<template>
+				<h3>Project:</h3>
+				
+			</template>
+			<div>Project 1:</div>
+			<div>Project 2:</div>
+		</section>
+		<section id="Contact_Me">
 			<form action="httpbin.org/" method="get">
 				<h2> Contact Me</h2>
 				<label for="contact_email"> Email: </label>
-				<input type="text" name="contact_email">
+				<input type="text" id= "contact_email" name="contact_email">
 				
 				<label for="contact_message"> Message: </label>
-				<input type="text" name="contact_message">
+				<input type="text" id="contact_message" name="contact_message">
 
 				<input type="submit" value="Contact Me">
 			</form>
 		</section>
-		<div>
+		<section>
 			<h2>Experimental Section</h2>
 			<figure>
-				<img src="/images/chris_cat_golden_circle.jpg" width="200rem" height="200rem" alt="A cat picture">
+				<img src="/images/chris_cat_golden_circle.jpg" width="20%" height="20%" alt="A cat picture">
 				<figcaption> My friend's cat embodying the <i>golden ratio</i></figcaption>
 			</figure>
 			<button>❤️ for the cat</button>
@@ -66,17 +76,45 @@
 						</select>
 					</li>
 					<li>
-						<label>What is your favorite animal? Why?</label>
+						<label for="text_fav_animal">What is your favorite animal? Why?</label>
 						<textarea id="text_fav_animal" name="text_fav_animal">
 							I like ...
 						</textarea>
 					</li>
+					<li>
+						<label for="animal_would_you_be"> If you could be an animal, which one would you be?</label>
+						<input list="animal_list">
+						<datalist id="animal_list">
+							<option value="Cat">
+							<option value="Dog">
+						</datalist>
+					</li>
 				</ol>
 			</fieldset>
-		</div>
+			<div>
+				<p>canvas demo</p>
+				<canvas id="the_canvas">
+					Your browser doesn't support the canvas tag.
+				</canvas>
+				<script>
+					let c=document.getElementById("the_canvas");
+					let ctx = c.getContext("2d");
+					ctx.fillStyle = "blue";
+					ctx.fillRect(30,30,40,40);
+				</script>
+				<p>svg demo</p>
+				<svg>
+					<rect
+						width="30"
+						height="60"
+					/>
+				</svg>
+			</div>
+			<p>If only i knew what the <code>background-color</code> property is.....</p>
+		</section>
 	</main>
 	<footer>
-		Made by Georolyn :) 
+		<h3>Made by Georolyn </h3>
 	</footer>
 </body>
 </html>
