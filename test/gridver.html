@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+	<meta name="description" content="Resume website for hw 2 in CSE 134B" >
+	<meta name="keywords" content="HTML, CSS, JavaScript" >
+	<meta name="author" content=" Georolyn :)" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	<title>CSE 134B Homework 2 Website</title>
+    <link rel="icon" type="image/x-icon" href="/images/chris_cat_golden_circle.jpg">
+	<style> 
+		:root{
+			--light-color-nav: lightgreen;
+			--light-color-select: rgb(96, 172, 96);
+			--font: "Fill Sans", sans-serif;
+		}
+		*{
+			font-family: var(--font);
+			box-sizing:border-box;
+		}
+
+		h1{
+		display: flex;
+		justify-content: center;
+		}
+		nav{
+		background-color: var(--light-color-nav);
+		justify-content: space-evenly;
+		font-size: 2rem;
+		height: 100%;
+		padding: 0.5rem;
+		& ul{
+			list-style: none;
+			padding:0;
+  			margin: 0;
+  			list-style: none;
+			display:flex;
+			justify-content: center;
+			gap:2rem;
+		}
+		& a:hover{
+			background-color: var(--light-color-select);
+		}
+		}
+
+		main {
+			display: grid;
+			grid-column: 10% 90% ;
+			grid-row: auto auto auto;
+		}
+		aside{
+			/* The #contact_me section is in here*/
+			background-color: pink;
+			grid-column-start: 1;
+		}	
+		#About {
+			background: green;
+			grid-column-start:2;
+			grid-row-start: 1;
+			display:block;
+			& ul{
+				list-style: none;
+				padding:0;
+  				margin: 0;
+				display:flex;
+				justify-content: space-evenly;
+				align-items: center;
+				gap:2rem;
+			}
+		}
+		#Projects {	
+			background-color: pink;
+			grid-column-start:2;
+			grid-row-start: 2;
+			
+			& ul{
+				background-color: aliceblue;
+				display: flex;
+				align-items: center;
+				justify-content: space-evenly;
+				list-style: none;
+				
+				& li{
+					margin: 1rem;
+					padding: 1rem;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					border: 0.1rem solid black;
+					border-radius: 15px;
+					max-height: 10rem;
+					max-width: 10px;
+				}
+			}
+		}
+		#Experimental {	
+			background-color: purple;	
+			grid-column-start:2;
+			grid-row-start: 3; 
+		}
+	
+	
+
+	</style>
+	
+</head>
+	
+<body>
+	
+    <header>
+		<h1>Welcome to Georolyn's Resume Website!</h1>
+		<nav>
+			<ul>
+				<li>
+					<a href="#About"> About </a>
+				</li>
+				<li>
+					<a href="#Projects"> Projects </a> <br>
+				</li>
+				<li>
+					<a href="#Contact_Me"> Contact Me </a> <br>
+				</li>
+				<li>
+					<a href="#Experimental"> Experimental Section </a> <br>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<aside id="Contact_Me_box">
+			<section id="Contact_Me">
+				<form action="https://httpbin.org/get" method="get">
+					<h2> Contact Me</h2>
+					<label for="contact_email"> Email: </label>
+					<input type="text" id= "contact_email" name="contact_email">
+					<br>
+					<label for="contact_message"> Message: </label>
+					<input type="text" id="contact_message" name="contact_message">
+					<br>
+					<input type="submit" value="Contact Me">
+				</form>
+			</section>
+		</aside>
+        <div id="Sections_box">
+		    <section id="About">
+			<h2>About Me</h2>
+			<ul>
+				<li>
+					<strong>My resume</strong> <br>
+					<iframe src="https://drive.google.com/file/d/1Odwau_fvA9R157fU6EWKdij_dbI9AVsg/preview?usp=sharing" title="My resume"></iframe>
+				</li>
+				<li>
+					<p>I know the following languages: 
+						<span style="color:gray;">Java, HTML, CSS, C++, C </span>
+					</p>
+					<table>
+						<caption>Known Languages</caption>
+						<colgroup>
+							<col style="background-color: lightblue;">
+							<col style="background-color: red">
+						</colgroup>
+						<tr>
+						  <th>Langauge</th>
+						  <th>Skill(1-5)</th>
+						</tr>
+						<tr>
+						  <td>Java</td>
+						  <td>4</td>
+						</tr>
+						<tr>
+						  <td>HTML</td>
+						  <td>3</td>
+						</tr>
+						<tr>
+							<td>CSS</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>C++</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>C</td>
+							<td>3</td>
+						</tr>
+					</table>
+				</li>
+			</ul>
+		    </section>
+		    <section id="Projects">
+			<h2>Projects!</h2>
+			<ul>
+				<li id="proj1">
+						<p>Proj 1: Full Stack Mern App</p>
+						<p>A full stack mern workout list website with login/signup and add/delete functionality <a href="https://github.com/ngngo0/mern-full-stack">Github Link</a></p>
+				</li>
+				<li id="proj2">
+
+						<p>Proj 2: Movie Searcher using API</p>
+						<p>A movie lookup website where API calls are being made to the omdb api<a href="https://github.com/ngngo0/MovieApi"> Github Link</a></p>
+					
+				</li>
+			</ul>
+		    </section>
+		    <section id="Experimental">
+			<h2>Experimental Section</h2>
+
+			<figure>
+				<picture>
+					<source media="(min-width:1000px)" srcset="/images/chris_cat_golden_circle.jpg">
+					<img src="/images/chris_cat.jpg" alt="Cat" width="200" height="200">
+				  </picture>
+				<figcaption> My friend's cat embodying the <i>golden ratio</i></figcaption>
+			</figure>
+			<button>❤️ for the cat</button>
+			<fieldset>
+				<legend>A heavy question...</legend>
+				<ol>
+					<li>
+						<label for="cat_select"> Are you a cat person or a dog person?</label>
+						<select id="cat_select">
+							<optgroup label="Normal">
+								<option> Cat</option>
+								<option> Dog</option>
+							</optgroup>
+							<optgroup label="Other">
+								<option>Both</option>
+								<option>Neither</option>
+								<option>Snakes</option>
+							</optgroup>
+						</select>
+					</li>
+					<li>
+						<label for="text_fav_animal">What is your favorite animal? Why?</label>
+						<textarea id="text_fav_animal" name="text_fav_animal">
+							I like ...
+						</textarea>
+					</li>
+					<li>
+						<label for="animal_would_you_be"> If you could be an animal, which one would you be? Pick from the options</label>
+						<input list="animal_list" id="animal_would_you_be">
+						<datalist id="animal_list">
+							<option value="Cat">
+							<option value="Dog">
+						</datalist>
+					</li>
+				</ol>
+			</fieldset>
+			<div>
+				<p>canvas demo</p>
+				<canvas id="the_canvas">
+					Your browser doesn't support the canvas tag.
+				</canvas>
+				<script>
+					let c=document.getElementById("the_canvas");
+					let ctx = c.getContext("2d");
+					ctx.fillStyle = "blue";
+					ctx.fillRect(30,30,40,40);
+				</script>
+				<p>svg demo</p>
+				<svg>
+					<rect
+						width="30"
+						height="60"
+					/>
+				</svg>
+			</div>
+			<p>If <em>only</em> i knew what the <code>background-color</code> property is.....</p>
+			<p>The song I have on repeat right now...</p>
+			<video controls>
+				<source src="othermedia/catpetting.mp4" type="video/mp4">
+			</video>
+			
+			<audio controls>
+				<source src="othermedia/wow.mp3" type="audio/mp3">
+			</audio>
+			
+			<template>
+				<h3>Project: </h3>
+				<a href=""> Github link </a>
+				<p1>This project is about...</p1>
+			</template>
+		    </section>
+        </div>
+	</main>
+	<footer>
+		<h3>Made by Georolyn </h3>
+	</footer>
+</body>
+</html>
