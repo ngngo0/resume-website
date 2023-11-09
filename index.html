@@ -7,23 +7,25 @@
 	<meta name="author" content=" Georolyn :)" >
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 	<title>CSE 134B Homework 2 Website</title>
-    <link rel="icon" type="image/x-icon" href="/images/chris_cat_golden_circle.jpg">
+    <link rel="icon" type="image/x-icon" href="/images/chris_cat_golden_circle.avif">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
 	<style> 
+		
 		:root{
 			--light-color-nav: #c06958;
 			--light-color-select: rgb(114, 81, 25);
-			--light-color-main:#f7c574;
 			--light-color-contact: #c06958;
-			--font: monaco, monospace;
 			
-			background-color: var(--light-color-main);
-			/*
-			background-image: url("/images/fallLeaves.jpg");
-			background-repeat:no-repeat;
-			*/
+			--dark-color-nav: #562b22;
+			--dark-color-select: rgb(76, 64, 42);
+			--dark-color-contact: #674842;
+			font-size: 17px;
+
 		}
 		*{
-			font-family: var(--font);
+			font-family: 'Oswald', sans-serif;
 			box-sizing:border-box;
 			margin: 0;
   			padding: 0;
@@ -32,7 +34,7 @@
 
 		#top{
 			display: flex;
-			background-color: var(--light-color-nav);
+			background-color: var(--light-color-nav,orange);
 			align-items: center;
 			
 			& h1{
@@ -63,15 +65,16 @@
 					color:black;
 					text-transform: uppercase;
 					text-decoration: none;
-					padding:1rem;
-					transition: all ease-in-out 250ms;
+					padding:1vw;
+					
 				}
 				& a:hover{
-					color: var(--light-color-select);
+					color: var(--light-color-select,beige);
 					transition: all ease-in-out 250ms;
 				}
 				& a:hover::after{
 					width: 12%;
+					transition: all ease-in-out 250ms;
 				}
 				& a:after{
 					content: "";
@@ -90,7 +93,7 @@
 			align-items: center;
 			justify-content: center;
 			margin:0.5rem;
-			line-height: 0.4;
+			line-height: 1rem;
 			& p{
 				margin:1rem;
 			}
@@ -106,19 +109,34 @@
 		input, textarea,select {
 			background-color:white !important;
 		}
+		#picture_holder{
+			background-image: url(/images/mapleleaves.jpg);
+			min-height: 20vh; 
+			background-size: cover; 
+			background-repeat: no-repeat;
+			& h2{
+				text-align: center;
+				padding:6vh;
+				color:white;
+				font-size:3em;
+			}
+			margin:1em;
+		}
 		main {
 			display: flex;
 			flex-wrap: wrap;
 			padding:0.25rem;
 			gap:1rem;
+			margin:1em;
 		}
 		aside, #About ul, #Projects ul, #Experiments :not(h2){
-			background-color: var(--light-color-contact);
+			background-color: var(--light-color-contact,orange);
 			border-radius: 15px;
 		}
+		
 		aside{
 			/* The #contact_me section is in here*/
-			background-color: var(--light-color-contact);
+			background-color: var(--light-color-contact,orange);
 			border-radius: 15px;
 			padding: 0.8rem;
 			line-height: 180%;
@@ -139,7 +157,7 @@
 		}
 		#About {
 			& ul{
-				background-color: var(--light-color-contact);
+				background-color: var(--light-color-contact,orange);
 				list-style: none;
 				display:flex;
 				justify-content: space-evenly;
@@ -154,6 +172,7 @@
 				list-style: none;
 				
 				& li{
+					background-color: var(--light-color-contact,orange);
 					margin: 1rem;
 					padding: 1rem;
 					display: flex;
@@ -163,7 +182,7 @@
 					border: 0.1rem solid black;
 					border-radius: 15px;
 					max-width: 20rem;
-					max-height: 19rem;
+					min-height: 20rem;
 
 					& a{
 						padding-bottom:1rem;
@@ -171,10 +190,16 @@
 				}
 			}
 		}
+		#Projects #mern_pic, #Projects #omdb_pic{
+			object-fit: 50% 50%;
+		}
 		#Experiments{
 			& ul{
 				list-style: none;
 			}
+		}
+		footer{
+			text-align: center;
 		}
 		@media screen and (max-width:1050px){
 			nav, aside{
@@ -196,18 +221,47 @@
 			}
 		}
 		@media screen and (max-width:690px){
+			:root{
+				font-size: 10px;
+			}
 			nav ul li{
 				display:inline;
 				align-items: center;
 			}
+			iframe{
+				max-width: 50vw;
+			}
 		}
+		@media screen and (max-width:390px){
+			:root{
+				font-size: 10px;
+			}
 
+		}
+		
+		@media (prefers-color-scheme: dark) {
+			:root{
+				background-color: black;
+			}
+			#top{
+				background-color: var(--dark-color-nav,brown);
+			}
+			aside, #About ul, #Projects ul, #Experiments :not(h2){
+				background-color: var(--dark-color-contact,brown);
+			
+			}
+			#Projects ul li{
+				background-color: rgba(79, 65, 48, 0.674);
+			}
+
+		}
+		
 	</style>
 	
 </head>
 	
 <body>
-	
+
     <header id="top">
 		<div id="logo">
 			<h1>Georolyn Ngo</h1>
@@ -232,6 +286,10 @@
 		</nav>
 		
 	</header>
+	<div id="picture_holder">
+		<!-- https://www.istockphoto.com/photo/original-wide-format-background-image-on-autumn-theme-with-space-for-text-gm1556220067-526827878 -->
+		<h2 id="welcome_banner">Welcome!</h2>
+	</div>
 	<main>
 		<aside id="Contact_Me_box">
 			<section id="Contact_Me">
@@ -261,8 +319,8 @@
 					<table>
 						<caption>Known Languages</caption>
 						<colgroup>
-							<col style="background-color: lightblue;">
-							<col style="background-color: red">
+							<col style="background-color: brown;">
+							<col style="background-color: orange">
 						</colgroup>
 						<tr>
 						  <th>Langauge</th>
@@ -297,10 +355,23 @@
 				<ul>
 					<li id="proj1">
 						<a href="https://github.com/ngngo0/mern-full-stack">Proj 1: Full Stack Mern App</a>
+						<picture id="mern_pic">
+							<!--https://blog.hyperiondev.com/index.php/2018/09/10/everything-need-know-mern-stack/-->
+							<source type="image/avif"srcset="/images/mern.avif" width="100%" height="auto">
+							<source type="image/jpg"srcset="/images/mern.jpg" width="100%" height="auto">
+							<img src="/images/mern.jpg" alt="mern stack logos" max-width="100%" height="auto">
+						</picture>
+						
 						<p>A full stack mern workout list website with login/signup and add/delete functionality </p>
 					</li>
 					<li id="proj2">
 						<a href="https://github.com/ngngo0/MovieApi">Proj 2: Movie Searcher using API</a>
+						<picture id="omdb_pic">
+							<!--https://shivrajnag.medium.com/simple-js-projects-project-2-movieinfo-search-app-aae688204fc2-->
+							<source type="image/avif"srcset="/images/omdbapi.avif" width="100%" height="auto">
+							<source type="image/jpg" srcset="/images/omdbapi.jpg" width="100%" height="auto">
+							<img src="/images/omdbapi.jpg" alt="omdb banner" max-width="100%" height="auto">
+						</picture>
 						<p>A movie lookup website where API calls are being made to the omdb api</p>
 
 					</li>
@@ -369,7 +440,6 @@
 							/>
 						</svg>
 					</div>
-					<p>If <em>only</em> i knew what the <code>background-color</code> property is.....</p>
 	
 					<template>
 						<h3>Project: </h3>
