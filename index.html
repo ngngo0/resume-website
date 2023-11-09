@@ -18,9 +18,9 @@
 			--light-color-select: rgb(114, 81, 25);
 			--light-color-contact: #c06958;
 			
-			--dark-color-nav: #562b22;
-			--dark-color-select: rgb(76, 64, 42);
-			--dark-color-contact: #674842;
+			--dark-color-nav: #8C5638;
+			--dark-color-select: rgb(73, 53, 19);
+			--dark-color-contact: #A76B50;
 			font-size: 17px;
 
 		}
@@ -122,6 +122,7 @@
 			}
 			
 		}
+		div:has(h2){}
 		main {
 			display: flex;
 			flex-wrap: wrap;
@@ -201,7 +202,8 @@
 		footer{
 			text-align: center;
 		}
-		@media screen and (max-width:1050px){
+		
+		@media screen and (max-width:1050px) {
 			nav, aside{
 				width:100%;
 			}
@@ -239,7 +241,7 @@
 
 		}
 		
-		@media (prefers-color-scheme: dark) {
+		@media (prefers-color-scheme: dark) and (color-gamut: srgb) {
 			:root{
 				background-color: black;
 			}
