@@ -10,21 +10,24 @@
     <link rel="icon" type="image/x-icon" href="/images/chris_cat_golden_circle.jpg">
 	<style> 
 		:root{
-			--light-color-nav: orange;
-			--light-color-select: rgb(181, 131, 44);
+			--light-color-nav: #c06958;
+			--light-color-select: rgb(114, 81, 25);
 			--light-color-main:#f7c574;
 			--light-color-contact: #c06958;
 			--font: monaco, monospace;
-
+			
 			background-color: var(--light-color-main);
-
+			/*
+			background-image: url("/images/fallLeaves.jpg");
+			background-repeat:no-repeat;
+			*/
 		}
 		*{
 			font-family: var(--font);
 			box-sizing:border-box;
 			margin: 0;
   			padding: 0;
-			margin-right: 1rem;
+			
 		}
 
 		#top{
@@ -39,29 +42,46 @@
 				font-size: 2.5rem;
 			}
 			& nav{
-				display: flex;
-				align-items:center;
-				flex-direction: column;
-				justify-content: space-between;
-				font-size: 2rem;
+				
+				text-align: right;
+				font-size: 1.8rem;
+				font-weight: 549;
 				padding: 0.7rem;
 				flex-grow:1;
-
+				position:relative;
+				
 				& ul{
+					display: flex;
 					
-					padding:0;
-  					margin: 0;
+					justify-content: flex-end;
 					gap:2rem;
 					& li{
-						display: inline;
 						list-style: none;
 					}
 				}
 				& a{
+					color:black;
+					text-transform: uppercase;
 					text-decoration: none;
+					padding:1rem;
+					transition: all ease-in-out 250ms;
 				}
 				& a:hover{
-					background-color: var(--light-color-select);
+					color: var(--light-color-select);
+					transition: all ease-in-out 250ms;
+				}
+				& a:hover::after{
+					width: 12%;
+				}
+				& a:after{
+					content: "";
+					position: absolute;
+					display: block;
+					height: 0.2em;
+					width: 0%;
+					background-color: black;
+					bottom:-0.9rem;
+					
 				}
 			}
 		}
@@ -78,17 +98,19 @@
 
 		h2{
 			font-size: 2em;
+			font-weight: 549;
 		}
 		h3{
 			font-size: 1.5em;
 		}
-
+		input, textarea,select {
+			background-color:white !important;
+		}
 		main {
 			display: flex;
 			flex-wrap: wrap;
 			padding:0.25rem;
 			gap:1rem;
-			
 		}
 		aside, #About ul, #Projects ul, #Experiments :not(h2){
 			background-color: var(--light-color-contact);
@@ -113,11 +135,11 @@
 		#Sections_box{
 			flex-grow:1;
 			flex-direction: column;
+			margin-right: 2rem;
 		}
 		#About {
 			& ul{
 				background-color: var(--light-color-contact);
-
 				list-style: none;
 				display:flex;
 				justify-content: space-evenly;
@@ -149,17 +171,33 @@
 				}
 			}
 		}
+		#Experiments{
+			& ul{
+				list-style: none;
+			}
+		}
 		@media screen and (max-width:1050px){
 			nav, aside{
 				width:100%;
 			}
+
 			#top #logo{
-				line-height: 1.2rem;
+				line-height: 1.4rem;
+			}
+		}
+		@media screen and (max-width:900px){
+
+			nav ul{
+				flex-direction: column;
+				width: 100%;
+				& li{
+					text-align: center;
+				}
 			}
 		}
 		@media screen and (max-width:690px){
-			nav ul{
-				display:block;
+			nav ul li{
+				display:inline;
 				align-items: center;
 			}
 		}
@@ -279,9 +317,9 @@
 						<figcaption> My friend's cat embodying the <i>golden ratio</i></figcaption>
 					</figure>
 					<button>❤️ for the cat</button>
-					<fieldset>
+					<fieldset >
 						<legend>A heavy question...</legend>
-						<ol>
+						<ul>
 							<li>
 								<label for="cat_select"> Are you a cat person or a dog person?</label>
 								<select id="cat_select">
@@ -310,7 +348,7 @@
 									<option value="Dog">
 								</datalist>
 							</li>
-						</ol>
+						</ul>
 					</fieldset>
 					<div>
 						<p>canvas demo</p>
