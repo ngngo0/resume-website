@@ -122,7 +122,7 @@
 			}
 			
 		}
-		div:has(h2){}
+		
 		main {
 			display: flex;
 			flex-wrap: wrap;
@@ -297,12 +297,24 @@
 			<section id="Contact_Me">
 				<form action="https://httpbin.org/get" method="get">
 					<h2> Contact Me</h2>
-					<label for="contact_email"> Email: </label> <br>
-					<input type="text" id= "contact_email" name="contact_email">
+					<label for="name"> Name: </label> <br>
+					<input type="text" id= "name" name="name">
+						<output name="name_errors"></output>
+						<output name="name_information"></output>
 					<br>
+
+					<label for="contact_email"> Email: </label> <br>
+					<input type="email" id= "contact_email" name="contact_email">
+						<output name="contact_errors"></output>
+						<output name="contact_information"></output>
+					<br>
+
 					<label for="contact_message"> Message: </label> <br>
 					<input type="text" id="contact_message" name="contact_message">
+						<output name="message_errors"></output>
+						<output name="message_information"></output>
 					<br>
+
 					<input id="submitBtn" type="submit" value="Contact Me">
 				</form>
 			</section>
