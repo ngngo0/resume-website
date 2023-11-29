@@ -142,19 +142,102 @@
 			padding: 0.8rem;
 			line-height: 180%;
 		}
+
 		#Contact_Me{
 			display: flex;
 			flex-basis: 100%;
 			justify-content: center;
 		}
+		form :required {
+                border: 2px solid blue;
+            }
+            input:invalid{
+                box-shadow: 0 0 5px 1px red;
+            }
+            input:focus:invalid{
+                box-shadow: none;
+            }
+
+            @keyframes flash{
+                50%{
+                    background: pink;
+                }
+                100%{
+                    background: transparent;
+                }
+            }
+            @keyframes fade {
+                0%{
+                    display:inline;
+                    opacity:1;
+                }
+                100%{
+                    opacity: 0;
+                    display:none;
+                }
+            }
+            .flash{
+                animation: flash .5s;
+            }
+            
+            .fadeOutError {
+                display: inline !important;
+                animation: fade 5s forwards;
+            }
+            
+            output:not( #countdown ){
+                display:none;
+                background-color: pink;
+                border-radius: 5px;
+            }
+            #countdown{
+                display:block;
+            }
 		#submitBtn{
 			padding:0.5rem;
 			font-size: 1rem;
 		}
+		
 		#Sections_box{
 			flex-grow:1;
 			flex-direction: column;
 			margin-right: 2rem;
+		}
+		.switch{
+			position: fixed;
+			top:10px;
+			right:10px;
+			display: inline-block;
+			height: 34px;
+		}
+		.switch input{
+			display:none;
+		}
+
+		.slider{
+			position:relative;
+			display: inline-block;
+			width:60px;
+			height: 34px;
+			background-color: #ccc;
+			border-radius: 34px;
+		}
+		.slider:before{
+			position:absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left:4px;
+			bottom: 4px; 
+			background-color: white;
+			border-radius: 50%;
+		}
+
+		input:checked + .slider:before{
+			transform: translateX(26px);
+		}
+		input:checked +.slider:after{
+			background-color: black;
 		}
 		#About {
 			& ul{
@@ -244,11 +327,12 @@
 		@media (prefers-color-scheme: dark) and (color-gamut: srgb) {
 			:root{
 				background-color: black;
+				color:white;
 			}
 			#top{
 				background-color: var(--dark-color-nav,brown);
 			}
-			aside, #About ul, #Projects ul, #Experiments :not(h2){
+			.colormatch{
 				background-color: var(--dark-color-contact,brown);
 			
 			}
@@ -293,37 +377,44 @@
 		<h2 id="welcome_banner">Welcome!</h2>
 	</div>
 	<main>
-		<aside id="Contact_Me_box">
+		<aside id="Contact_Me_box" class="colormatch">
 			<section id="Contact_Me">
-				<form action="https://httpbin.org/get" method="get">
+				<form action="https://httpbin.org/post" method="post">
 					<h2> Contact Me</h2>
 					<label for="name"> Name: </label> <br>
-					<input type="text" id= "name" name="name">
+					<input type="text" id= "name" name="name" required>
 						<output name="name_errors"></output>
 						<output name="name_information"></output>
 					<br>
-
+			
 					<label for="contact_email"> Email: </label> <br>
-					<input type="email" id= "contact_email" name="contact_email">
+					<input type="email" id= "contact_email" name="contact_email" required>
 						<output name="contact_errors"></output>
 						<output name="contact_information"></output>
 					<br>
-
+			
 					<label for="contact_message"> Message: </label> <br>
-					<input type="text" id="contact_message" name="contact_message">
-						<output name="message_errors"></output>
-						<output name="message_information"></output>
-					<br>
-
+					<input id="contact_message" name="contact_message" type="text" maxlength="240" rows="5" required pattern="^[^<>%$]*$"></input>
+					<br>	
+						<output id="message_errors" name="message_errors"></output><br>
+						<output id="countdown" name="message_information">240 characters</output>
+						<br>
+			
 					<input id="submitBtn" type="submit" value="Contact Me">
 				</form>
 			</section>
 		</aside>
 
+
 		<div id="Sections_box">
 		    <section id="About">
 			<h2>About Me</h2>
-			<ul>
+				<label class="switch" style="display: none">
+					<input type="checkbox" id="themeToggle" onclick="toggleTheme()">
+					<span class="slider"></span>
+				</label>
+	
+			<ul class="colormatch">
 				<li>
 					<h3>My Resume</h3> <br>
 					<iframe src="https://drive.google.com/file/d/1Odwau_fvA9R157fU6EWKdij_dbI9AVsg/preview?usp=sharing" title="My resume"></iframe>
@@ -364,9 +455,11 @@
 				</li>
 			</ul>
 		    </section>
+		</label>
+
 		    <section id="Projects">
 				<h2>Projects!</h2>
-				<ul>
+				<ul class="colormatch">
 					<li id="proj1">
 						<a href="https://github.com/ngngo0/mern-full-stack">Proj 1: Full Stack Mern App</a>
 						<picture id="mern_pic">
@@ -393,7 +486,7 @@
 		    </section>
 		    <section id="Experiments">
 				<h2>Experiments</h2>
-				<div>
+				<div class="colormatch">
 					<figure>
 						<picture>
 							<source media="(min-width:1000px)" srcset="/images/chris_cat_golden_circle.jpg">
@@ -464,7 +557,113 @@
 				
 		    </section>
         </div>
-		
+		<script>
+			//rely on js being on the change the visibility to not none
+			let changeVisibilityOfSwitch= document.getElementsByClassName('switch')[0].style.display='inline-block';
+			//slider
+			function setTheme(theme){
+				const root = document.documentElement;
+				const top=document.getElementById('top');
+				const arrayColorMatch = document.getElementsByClassName('colormatch');
+				const anchorTags=document.getElementsByTagName("a");
+				if(theme==='dark'){
+					for (let index = 0; index < arrayColorMatch.length; ++index) {
+						arrayColorMatch[index].style.setProperty('background-color', 'var(--dark-color-contact)');
+					}
+					for (let index = 0; index < anchorTags.length; ++index) {
+						anchorTags[index].style.setProperty('color', 'white');
+					}
+					root.style.setProperty('background-color', 'black');
+					root.style.setProperty('color', 'white');
+					top.style.setProperty('background', 'var(--dark-color-nav)');
+
+				}else{
+					for (let index = 0; index < arrayColorMatch.length; ++index) {
+						arrayColorMatch[index].style.setProperty('background-color', 'var(--light-color-contact)');
+					}
+					for (let index = 0; index < anchorTags.length; ++index) {
+						anchorTags[index].style.setProperty('color', 'black');
+					}
+					root.style.setProperty('background', 'white');
+					root.style.setProperty('color', 'black');
+					top.style.setProperty('background', 'var(--light-color-nav,brown)');
+				}
+			}
+			function toggleTheme(){
+				// console.log('clicked checkbox');
+				const currTheme = localStorage.getItem('theme') || 'normal';
+				const newTheme = currTheme ==='normal'?'dark':'normal';
+				localStorage.setItem('theme', newTheme);
+				setTheme(newTheme);
+			}
+			document.addEventListener('DOMContentLoaded',()=>{
+				const savedTheme = localStorage.getItem('theme');
+				if(savedTheme){
+					setTheme(savedTheme);
+					document.getElementById('themeToggle').checked= savedTheme==='dark';
+				}
+			})
+
+			let form_errors=[]; 
+	
+			const email= document.getElementById("contact_email");
+			email.addEventListener("input", (event)=>{
+				//check if the email is valid. i tried to use checkvalidity but after like
+				// 3 hours of bugs i realized you can't change the custom msg back after 1 error with this format.
+				if(email.validity.typeMismatch === true ){
+					email.setCustomValidity("Please type in a valid email.");
+					form_errors.push(event.target.value + " from email");
+				}else{
+					email.setCustomValidity("");
+				}
+			});
+	
+			
+			const contactMessage= document.getElementById("contact_message");
+			const messageErrorMsg = document.getElementsByName("message_errors")[0];
+			messageErrorMsg.innerHTML="You just typed an illegal character";
+
+			//on input change, we check if the contact message is problematic
+			contactMessage.addEventListener("input", (event)=>{
+				if(contactMessage.validity.patternMismatch===true){
+					//if the contact message area has special characters.
+					contactMessage.setCustomValidity("Please enter a valid message without special characters like $%^&*()<>/;'[]\`");
+					form_errors.push(event.target.value + " from message");
+	
+					//reflowing and removing flash and fade when the pattern is wrong
+					contactMessage.classList.remove('flash');
+					void contactMessage.offsetWidth;
+					contactMessage.classList.add('flash');
+					
+					messageErrorMsg.classList.remove('fadeOutError');
+					void messageErrorMsg.offsetWidth;
+					messageErrorMsg.classList.add('fadeOutError');
+					
+				}else{
+					contactMessage.setCustomValidity("");
+				}
+				//countdown info thing
+				const countdown=document.getElementsByName("message_information")[0];
+				countdown.innerHTML = 240-contactMessage.value.length + "/240 characters";
+	
+				//because other wise, copy and paste ruins it. so need the and and.
+				if(contactMessage.value.length > 80 && contactMessage.value.length< 160){
+					countdown.style.color='orange';
+				}else if(contactMessage.value.length > 160 && contactMessage.value.length< 240){
+					countdown.style.color='deeppink';
+				}else if(contactMessage.value.length===240){
+					countdown.style.color='red';
+				}else{
+					countdown.style.color='black';
+				}
+			});
+			//because invalid fires on submission + checkvalidity
+			const myForm = document.forms[0];
+			myForm.addEventListener("submit", (event)=>{
+				contactMessage.insertAdjacentHTML("afterend",'<input type="text" style="display: none" name="form-errors" />');
+				document.getElementsByName('form-errors')[0].setAttribute("value", form_errors);
+			});
+		</script>
 	</main>
 	<footer>
 		<h3>Made by Georolyn </h3>

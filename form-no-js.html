@@ -17,33 +17,6 @@
                 box-shadow: none;
             }
 
-            @keyframes flash{
-                50%{
-                    background: pink;
-                }
-                100%{
-                    background: transparent;
-                }
-            }
-            @keyframes fade {
-                0%{
-                    display:inline;
-                    opacity:1;
-                }
-                100%{
-                    opacity: 0;
-                    display:none;
-                }
-            }
-            .flash{
-                animation: flash .5s;
-            }
-            
-            .fadeOutError {
-                display: inline !important;
-                animation: fade 5s forwards;
-            }
-            
             output:not( #countdown ){
                 display:none;
                 background-color: pink;
@@ -74,7 +47,7 @@
         
                 <label for="contact_message"> Message: </label> <br>
                 <input id="contact_message" name="contact_message" type="text" maxlength="240" rows="5" required pattern="^[^<>%$]*$"></input>
-                    <output id="message_errors" name="message_errors">"You just typed an illegal character"</output>
+                    <output id="message_errors" name="message_errors"></output>
                     <output id="countdown" name="message_information">240 characters</output>
                     <br>
         
@@ -83,63 +56,4 @@
         </section>
     </body>
     
-    <script>
-        let form_errors=[]; 
-
-        const email= document.getElementById("contact_email");
-        email.addEventListener("input", (event)=>{
-            //check if the email is valid. i tried to use checkvalidity but after like
-            // 3 hours of bugs i realized you can't change the custom msg back after 1 error with this format.
-            if(email.validity.typeMismatch === true ){
-                email.setCustomValidity("Please type in a valid email.");
-                form_errors.push(event.target.value + " from email");
-            }else{
-                email.setCustomValidity("");
-            }
-        });
-
-        
-        const contactMessage= document.getElementById("contact_message");
-        const messageErrorMsg = document.getElementsByName("message_errors")[0];
-        //on input change, we check if the contact message is problematic
-        contactMessage.addEventListener("input", (event)=>{
-            if(contactMessage.validity.patternMismatch===true){
-                //if the contact message area has special characters.
-                contactMessage.setCustomValidity("Please enter a valid message without special characters like $%^&*()<>/;'[]\`");
-                form_errors.push(event.target.value + " from message");
-
-                //reflowing and removing flash and fade when the pattern is wrong
-                contactMessage.classList.remove('flash');
-                void contactMessage.offsetWidth;
-                contactMessage.classList.add('flash');
-                
-                messageErrorMsg.classList.remove('fadeOutError');
-                void messageErrorMsg.offsetWidth;
-                messageErrorMsg.classList.add('fadeOutError');
-                
-            }else{
-                contactMessage.setCustomValidity("");
-            }
-            //countdown info thing
-            const countdown=document.getElementsByName("message_information")[0];
-            countdown.innerHTML = 240-contactMessage.value.length + "/240 characters";
-
-            //because other wise, copy and paste ruins it. so need the and and.
-            if(contactMessage.value.length > 80 && contactMessage.value.length< 160){
-                countdown.style.color='orange';
-            }else if(contactMessage.value.length > 160 && contactMessage.value.length< 240){
-                countdown.style.color='deeppink';
-            }else if(contactMessage.value.length===240){
-                countdown.style.color='red';
-            }else{
-                countdown.style.color='black';
-            }
-        });
-        //because invalid fires on submission + checkvalidity
-        const myForm = document.forms[0];
-        myForm.addEventListener("submit", (event)=>{
-            contactMessage.insertAdjacentHTML("afterend",'<input type="text" style="display: none" name="form-errors" />');
-            document.getElementsByName('form-errors')[0].setAttribute("value", form_errors);
-        });
-    </script>
 </html>
