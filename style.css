@@ -1,23 +1,35 @@
 :root{
-    --light-color-nav: #c06958;
-    --light-color-select: rgb(114, 81, 25);
-    --light-color-contact: #c06958;
     
-    --dark-color-nav: #8C5638;
-    --dark-color-select: rgb(73, 53, 19);
-    --dark-color-contact: #A76B50;
-    font-size: 17px;
+    --light-color-nav: #ACC18A;
+    --light-color-select: beige;
+    --light-color-contact: #ACC18A;
+    --light-text-color: #F2FBE0;
+    --light-bg-color: #F2FBE0;
+ 
 
+    --dark-text-color: black;
+    --dark-color-nav: #2d6a4f;
+    --dark-color-select: beige;
+    --dark-color-contact: #2d6a4f;
+    --dark-bg-color: #1b4332;
+    font-size: 17px;
+    
+    
 }
 *{
-    font-family: 'Oswald', sans-serif;
+    /*font-family: 'Oswald', sans-serif;*/
+    color: var(--dark-text-color, black);
     box-sizing:border-box;
     margin: 0;
       padding: 0;
-    
+}
+
+body{
+    background-color: var(--light-bg-color, beige);
 }
 
 #top{
+    
     display: flex;
     background-color: var(--light-color-nav,orange);
     align-items: center;
@@ -47,19 +59,20 @@
             }
         }
         & a{
-            color:black;
+            color:var(--dark-text-color,black) !important;
             text-transform: uppercase;
             text-decoration: none;
             padding:1vw;
             
         }
-        & a:hover{
-            color: var(--light-color-select,beige);
+        & a:hover {
+            color: var(--light-text-color,beige);
             transition: all ease-in-out 250ms;
         }
     
     }
 }
+
 #top #logo{
     display:block;
     align-items: center;
@@ -82,14 +95,14 @@ input, textarea,select {
     background-color:white !important;
 }
 #picture_holder{
-    background-image: url(/images/mapleleaves.jpg);
+    background-image: url(/images/greenbackground.avif);
     min-height: 20vh; 
     background-size: cover; 
     background-repeat: no-repeat;
     & h2{
         text-align: center;
         padding:6vh;
-        color:white;
+        color:var(--dark-text-color, white);
         font-size:3em;
     }
     
@@ -109,7 +122,6 @@ aside, #About ul, #Projects ul, #Experiments :not(h2,weather-widget){
 
 aside{
     /* The #contact_me section is in here*/
-    background-color: var(--light-color-contact,orange);
     border-radius: 15px;
     padding: 0.8rem;
     line-height: 180%;
@@ -121,50 +133,49 @@ aside{
     justify-content: center;
 }
 form :required {
-        border: 2px solid blue;
+    border: 2px solid blue;
+}
+input:invalid{
+    box-shadow: 0 0 5px 1px red;
+}
+input:focus:invalid{
+    box-shadow: none;
+}
+@keyframes flash{
+    50%{
+        background: pink;
     }
-    input:invalid{
-        box-shadow: 0 0 5px 1px red;
+    100%{
+        background: transparent;
     }
-    input:focus:invalid{
-        box-shadow: none;
+}
+@keyframes fade {
+    0%{
+        display:inline;
+        opacity:1;
     }
-
-    @keyframes flash{
-        50%{
-            background: pink;
-        }
-        100%{
-            background: transparent;
-        }
-    }
-    @keyframes fade {
-        0%{
-            display:inline;
-            opacity:1;
-        }
-        100%{
-            opacity: 0;
-            display:none;
-        }
-    }
-    .flash{
-        animation: flash .5s;
-    }
-    
-    .fadeOutError {
-        display: inline !important;
-        animation: fade 5s forwards;
-    }
-    
-    output:not( #countdown ){
+    100%{
+        opacity: 0;
         display:none;
-        background-color: pink;
-        border-radius: 5px;
     }
-    #countdown{
-        display:block;
-    }
+}
+.flash{
+    animation: flash .5s;
+}
+
+.fadeOutError {
+    display: inline !important;
+    animation: fade 5s forwards;
+}
+
+output:not( #countdown ){
+    display:none;
+    background-color: pink;
+    border-radius: 5px;
+}
+#countdown{
+    display:block;
+}
 #submitBtn{
     padding:0.5rem;
     font-size: 1rem;
@@ -252,6 +263,7 @@ input:checked +.slider:after{
 #Experiments{
     & ul{
         list-style: none;
+        background-color: inherit;
     }
 }
 footer{
@@ -297,9 +309,9 @@ footer{
 }
 
 @media (prefers-color-scheme: dark) and (color-gamut: srgb) {
-    :root{
-        background-color: black;
-        color:white;
+
+    body{
+        background-color: var(--dark-bg-color, black);
     }
     #top{
         background-color: var(--dark-color-nav,brown);
@@ -308,8 +320,11 @@ footer{
         background-color: var(--dark-color-contact,brown);
     
     }
+    aside, #About ul, #Projects ul, #Experiments :not(h2,weather-widget){
+        background-color: var(--dark-color-contact,orange) !important;
+    }
     #Projects ul li{
-        background-color: rgba(79, 65, 48, 0.674);
+        background-color: var(--dark-color-contact);
     }
 
 }
